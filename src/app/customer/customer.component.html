@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-4">
+    <form [formGroup]="customerService.form" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="$key">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" formControlName="fullName" class="form-control"
+          [ngClass]="{'is-invalid': submitted && formControls.fullName.invalid}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.fullName.invalid">
+          This field is required..
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" class="form-control"
+               [ngClass]="{'is-invalid': submitted && formControls.email.invalid}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors">
+          Invalid email address..
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="text" formControlName="mobile" class="form-control"
+               [ngClass]="{'is-invalid': submitted && formControls.mobile.invalid}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.mobile.errors">
+          <label *ngIf="formControls.mobile.errors.required">This field is required</label>
+          <label *ngIf="formControls.mobile.errors.minlength">Should be at least 8 characters</label>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" formControlName="location" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+    </form>
+
+    <div class="alert alert-info" *ngIf="showSuccessMessage">
+      Submitted successfully.
+    </div>
+
+  </div>
+  <div class="col-md-8">
+    <app-customer-list></app-customer-list>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<!--<div class="row" *ngFor="let customer of customers">-->
+<!--<div class="col-md-5">-->
+<!--<label>Customer full name</label>-->
+<!--<p>{{customer.fullName}}</p>-->
+<!--</div>-->
+<!--</div>-->
+
+<table class="table table-sm">
+  <thead>
+  <th>Full name</th>
+  <th>Email</th>
+  <th>Email</th>
+  <th></th>
+  </thead>
+
+  <ng-container *ngFor="let customer of customers">
+    <tr class="table-dark">
+      <td>{{customer.fullName}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.mobile}}</td>
+      <td>
+        <button class="btn btn-outline-info" (click)="customerService.populateForm(customer)">Edit</button>
+        <button class="btn btn-outline-danger" (click)="customerService.removeCustomer(customer.$key)">Delete</button>
+      </td>
+    </tr>
+  </ng-container>
+
+</table>
